@@ -1,6 +1,6 @@
 ## MayBank Monthly Account Statement Data Extraction (Personal/Individual Account)
 
-This project extracts financial data from MBB PDF account statement.
+This project extracts financial data from Maybank statement to JSON or CSV.
 
 ### Features
 

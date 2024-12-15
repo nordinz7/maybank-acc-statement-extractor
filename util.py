@@ -13,7 +13,7 @@ NOTE_START_ENTRY = "Perhation / Note"
 NOTE_END_ENTRY = (
     "ENTRY DATE TRANSACTION DESCRIPTION TRANSACTION AMOUNT STATEMENT BALANCE"
 )
-OUTPUT_FILENAME = "EXTRACTED"
+OUTPUT_FILENAME = "MBB_EXTRACTED"
 
 Output = TypedDict("Output", {"date": str, "desc": str, "bal": float, "trans": float})
 
@@ -55,10 +55,10 @@ def parse_acc_value(value: str) -> float:
 def output_extracted_data(value, type: str = "csv"):
     is_json = type == "json"
     newline = None if is_json else ""
+    date = datetime.strptime(value[2]["date"], "%d/%m/%y")
+    file_date = date.strftime("%Y%m %B ")
 
-    with open(
-        f"{OUTPUT_FILENAME}-{datetime.now()}.{type}", "w", newline=newline
-    ) as o_file:
+    with open(f"{OUTPUT_FILENAME}-{file_date}.{type}", "a", newline=newline) as o_file:
         if is_json:
             json.dump(value, o_file, indent=4)
         else:
