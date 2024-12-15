@@ -92,3 +92,38 @@ with open("extracted.csv", "w", newline="") as csv_file:
     writer = csv.DictWriter(csv_file, ["date", "desc", "trans", "bal"])
     writer.writeheader()  # Write the header row
     writer.writerows(rtn)  # Write the data rows
+
+tracking_bal = 0.0
+
+# Define ANSI escape codes for colors
+CYAN = "\033[96m"
+GREEN = "\033[92m"
+RED = "\033[91m"
+BLUE = "\033[94m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
+for i, obj in enumerate(rtn):
+    if i == 0:
+        # Display beginning balance in cyan
+        print(f"{CYAN}BEGINNING BALANCE{RESET}: {GREEN}{obj['bal']:.2f}{RESET}")
+        tracking_bal = obj["bal"]
+    else:
+        transaction_color = GREEN if obj["trans"] > 0 else RED
+
+        # Format transaction and balance
+        transaction = f"BAL:{round(tracking_bal,2)} => {transaction_color}{obj['trans']:.2f}{RESET}"
+        new_balance = f"{BLUE}{obj['bal']:.2f}{RESET}"
+
+        # Check if the balance is correct and highlight
+        balance_check = (
+            f"{YELLOW}✅{RESET}"
+            if round(tracking_bal + obj["trans"], 2) == obj["bal"]
+            else f"{YELLOW}❌{RESET}"
+        )
+
+        # Print formatted output
+        print(f"{transaction}....NEW BAL: {new_balance} {balance_check}")
+
+        # Update tracking balance
+        tracking_bal += obj["trans"]
