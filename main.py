@@ -1,11 +1,11 @@
 import click
-import pdfplumber
 from util import (
     get_filtered_data,
     get_mapped_data,
     kebab_to_snake,
     output_extracted_data,
     print_acc_summary,
+    read_pdfs,
 )
 
 
@@ -42,14 +42,10 @@ def main(*args, **kwargs):
     def getv(k):
         return kwargs[kebab_to_snake(k)]
 
-    with pdfplumber.open(getv("path"), password=getv("pwd")) as pdf:
-        all_chars = [
-            txt
-            for pg, page in enumerate(pdf.pages)
-            for txt in page.extract_text().split("\n")
-        ]
+    arr = read_pdfs(getv("path"), getv("pwd"))
 
-        filtered_data = get_filtered_data(all_chars)
+    for ar in arr:
+        filtered_data = get_filtered_data(ar)
 
         mapped_data = get_mapped_data(filtered_data)
 

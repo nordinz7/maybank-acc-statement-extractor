@@ -1,9 +1,11 @@
 import csv
 import json
+import os
 import numpy as np
 from datetime import datetime
 from typing import TypedDict
 
+import pdfplumber
 
 START_ENTRY = "BEGINNING BALANCE"
 END_ENTRY = "TOTAL DEBIT"
@@ -120,7 +122,6 @@ def get_filtered_data(arr):
             break
 
     filtered = arr[indexes[0] : indexes[1]]
-
     temp = np.array(filtered)
     notes_indices = np.where(
         np.char.startswith(temp, NOTE_START_ENTRY)
@@ -173,3 +174,25 @@ def get_mapped_data(arr):
 
 def kebab_to_snake(kebab_str: str) -> str:
     return kebab_str.replace("-", "_")
+
+
+def read_single_pdf_file(path, pwd):
+    with pdfplumber.open(path, password=pwd) as pdf:
+        return [
+            txt
+            for pg, page in enumerate(pdf.pages)
+            for txt in page.extract_text().split("\n")
+        ]
+
+
+def read_pdfs(path, pwd):
+    pdf_files = []
+    try:
+        for filename in os.listdir(path):
+            if filename.endswith(".pdf"):  # Check if the file is a PDF
+                file_path = os.path.join(path, filename)
+                pdf_files.append(read_single_pdf_file(file_path, pwd))
+    except NotADirectoryError as e:
+        pdf_files.append(read_single_pdf_file(path, pwd))
+
+    return pdf_files
