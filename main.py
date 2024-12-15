@@ -2,10 +2,14 @@ import pdfplumber
 import numpy as np
 import json
 import csv
+from dotenv import load_dotenv
+import os
 
 from util import is_valid_date, expand_ranges, parse_acc_value
 
 from typing import List, TypedDict
+
+load_dotenv()
 
 START_ENTRY = "BEGINNING BALANCE"
 END_ENTRY = "TOTAL DEBIT"
@@ -19,7 +23,9 @@ Output = TypedDict("Output", {"date": str, "desc": str, "bal": float, "trans": f
 
 text_splitted = []
 # Open the PDF file
-with pdfplumber.open("account_statement.pdf") as pdf:
+with pdfplumber.open(
+    os.getenv("FILE_PATH"), password=os.getenv("FILE_PASSWORD")
+) as pdf:
     # Extract text from each page
     with open("output.txt", "w") as output_file:
         for page_number, page in enumerate(pdf.pages):
@@ -137,5 +143,5 @@ for i, obj in enumerate(rtn):
         tracking_bal += obj["trans"]
 
 print(
-    f"TOTAL BALANCE: {round(tracking_bal,2)}, TOTAL CREDIT: {round(tracking_cred,2)}, TOTAL DEBIT: {round(tracking_deb,2)}"
+    f"TOTAL BALANCE: {BLUE}{round(tracking_bal,2)}{RESET}, TOTAL CREDIT: {GREEN}{round(tracking_cred,2)}{RESET}, TOTAL DEBIT: {RED}{round(tracking_deb,2)}{RESET}"
 )
