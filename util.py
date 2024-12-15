@@ -199,3 +199,10 @@ def read_pdfs(path, pwd):
         pdf_files.append(read_single_pdf_file(path, pwd))
 
     return pdf_files
+
+
+def process_output(arr, format, is_print_summary):
+    output_extracted_data(arr, format)
+
+    if is_print_summary:
+        print_acc_summary(arr)

@@ -3,8 +3,7 @@ from util import (
     get_filtered_data,
     get_mapped_data,
     kebab_to_snake,
-    output_extracted_data,
-    print_acc_summary,
+    process_output,
     read_pdfs,
 )
 
@@ -28,21 +27,32 @@ from util import (
     default=False,
     help="print summary of the account statement",
 )
+@click.option(
+    "--merge",
+    default=False,
+    help="output only single merged file.",
+)
 def main(*args, **kwargs):
     def getv(k):
         return kwargs[kebab_to_snake(k)]
 
     arr = read_pdfs(getv("path"), getv("pwd"))
 
+    processed = []
+
     for ar in arr:
         filtered_data = get_filtered_data(ar)
 
         mapped_data = get_mapped_data(filtered_data)
 
-        output_extracted_data(mapped_data, getv("format"))
+        if getv("merge"):
+            processed.extend(mapped_data)
+            continue
 
-        if getv("print-summary"):
-            print_acc_summary(mapped_data)
+        process_output(mapped_data, getv("format"), getv("print-summary"))
+
+    if processed:
+        process_output(processed, getv("format"), getv("print-summary"))
 
 
 if __name__ == "__main__":
