@@ -52,13 +52,14 @@ def parse_acc_value(value: str) -> float:
         return float(value)
 
 
-def output_extracted_data(value, type: str = "csv"):
+def output_extracted_data(value, options):
+    type = options["format"]
     is_json = type == "json"
     newline = None if is_json else ""
     date = datetime.strptime(value[2]["date"], "%d/%m/%y")
-    file_date = date.strftime("%Y%m %B ")
+    file_date = date.strftime("%Y%m %B ") if not options["merge"] else "-COMBINED"
 
-    with open(f"{OUTPUT_FILENAME}-{file_date}.{type}", "a", newline=newline) as o_file:
+    with open(f"{OUTPUT_FILENAME}{file_date}.{type}", "w", newline=newline) as o_file:
         if is_json:
             json.dump(value, o_file, indent=4)
         else:
@@ -169,6 +170,10 @@ def get_mapped_data(arr):
             continue
         i += 1
 
+    narr[0]["date"] = datetime.strptime(narr[2]["date"], "%d/%m/%y").strftime(
+        "01/%m/%y"
+    )
+
     return narr
 
 
@@ -201,8 +206,8 @@ def read_pdfs(path, pwd):
     return pdf_files
 
 
-def process_output(arr, format, is_print_summary):
-    output_extracted_data(arr, format)
+def process_output(arr, options):
+    output_extracted_data(arr, options)
 
-    if is_print_summary:
+    if options["print_summary"]:
         print_acc_summary(arr)

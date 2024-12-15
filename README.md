@@ -1,4 +1,4 @@
-## MayBank Monthly Account Statement Data Extraction (Personal/Individual Account)
+# MayBank email statement delivery Data Extraction (Monthly)
 
 This project extracts financial data from Maybank statement to JSON or CSV.
 

@@ -29,14 +29,11 @@ from util import (
 )
 @click.option(
     "--merge",
-    default=False,
+    default=True,
     help="output only single merged file.",
 )
 def main(*args, **kwargs):
-    def getv(k):
-        return kwargs[kebab_to_snake(k)]
-
-    arr = read_pdfs(getv("path"), getv("pwd"))
+    arr = read_pdfs(kwargs["path"], kwargs["pwd"])
 
     processed = []
 
@@ -45,14 +42,14 @@ def main(*args, **kwargs):
 
         mapped_data = get_mapped_data(filtered_data)
 
-        if getv("merge"):
+        if kwargs["merge"]:
             processed.extend(mapped_data)
             continue
 
-        process_output(mapped_data, getv("format"), getv("print-summary"))
+        process_output(mapped_data, kwargs)
 
     if processed:
-        process_output(processed, getv("format"), getv("print-summary"))
+        process_output(processed, kwargs)
 
 
 if __name__ == "__main__":
