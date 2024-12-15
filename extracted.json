@@ -1,0 +1,176 @@
+[
+    {
+        "desc": "BEGINNING BALANCE",
+        "bal": 1350.0,
+        "trans": 0,
+        "date": ""
+    },
+    {
+        "desc": "CASH WITHDRAWAL",
+        "bal": 780.0,
+        "trans": -570.0,
+        "date": "01/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT BRANDS OUTLET KP * KLANG PAYMENT VIA MYDEBIT",
+        "bal": 680.0,
+        "trans": -100.0,
+        "date": "01/01/24"
+    },
+    {
+        "desc": "SALE DEBIT WU *0593088893 * Kuala Kumpur, MYS SALE DEBIT",
+        "bal": 286.58,
+        "trans": -393.42,
+        "date": "02/01/24"
+    },
+    {
+        "desc": "SALE DEBIT AEON CO- BDR BARU K* KLANG, MYS SALE DEBIT",
+        "bal": 275.48,
+        "trans": -11.1,
+        "date": "03/01/24"
+    },
+    {
+        "desc": "SALE DEBIT DIGI-ONLINE PAYMENT* SHAH ALAM, MYS SALE DEBIT",
+        "bal": 245.48,
+        "trans": -30.0,
+        "date": "05/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT AEON-BDR BARU KLANG* SELANGOR, MYS PAYMENT VIA MYDEBIT",
+        "bal": 239.98,
+        "trans": -5.5,
+        "date": "05/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT KLANG PAYMENT VIA MYDEBIT",
+        "bal": 144.03,
+        "trans": -95.95,
+        "date": "06/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT 99 SPEEDMART-1616 * SELANGOR PAYMENT VIA MYDEBIT",
+        "bal": 137.88,
+        "trans": -6.15,
+        "date": "06/01/24"
+    },
+    {
+        "desc": "SALE DEBIT MCDONALDS-KL SENTRA* KUALA LUMPUR, MYS SALE DEBIT",
+        "bal": 123.88,
+        "trans": -14.0,
+        "date": "08/01/24"
+    },
+    {
+        "desc": "SALE DEBIT AEON CO- BDR BARU K* KLANG, MYS SALE DEBIT",
+        "bal": 118.58,
+        "trans": -5.3,
+        "date": "09/01/24"
+    },
+    {
+        "desc": "SALE DEBIT AEON CO- BDR BARU K* KLANG, MYS SALE DEBIT",
+        "bal": 113.53,
+        "trans": -5.05,
+        "date": "12/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT AEON-BDR BARU KLANG* SELANGOR, MYS PAYMENT VIA MYDEBIT",
+        "bal": 108.03,
+        "trans": -5.5,
+        "date": "12/01/24"
+    },
+    {
+        "desc": "SALE DEBIT AEON CO- BDR BARU K* KLANG, MYS SALE DEBIT",
+        "bal": 103.13,
+        "trans": -4.9,
+        "date": "17/01/24"
+    },
+    {
+        "desc": "CASH WITHDRAWAL",
+        "bal": 3.13,
+        "trans": -100.0,
+        "date": "19/01/24"
+    },
+    {
+        "desc": "FUND TRANSFER TO A/ SAHUL HAMID HANIFA * Urgent",
+        "bal": 53.13,
+        "trans": 50.0,
+        "date": "25/01/24"
+    },
+    {
+        "desc": "CASH WITHDRAWAL",
+        "bal": 3.13,
+        "trans": -50.0,
+        "date": "25/01/24"
+    },
+    {
+        "desc": "CASH WDRAWAL REV",
+        "bal": 53.13,
+        "trans": 50.0,
+        "date": "25/01/24"
+    },
+    {
+        "desc": "CASH WITHDRAWAL",
+        "bal": 3.13,
+        "trans": -50.0,
+        "date": "25/01/24"
+    },
+    {
+        "desc": "SVG GIRO CR SWIFT HAULAGE SDN BH PAYROLL CREDIT 230202PK929",
+        "bal": 3172.58,
+        "trans": 3169.45,
+        "date": "26/01/24"
+    },
+    {
+        "desc": "TRANSFER FROM A/C SAHUL HAMID HANIFA * Borrow",
+        "bal": 3108.58,
+        "trans": -64.0,
+        "date": "26/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT BRANDS OUTLET KP * KLANG PAYMENT VIA MYDEBIT",
+        "bal": 3058.68,
+        "trans": -49.9,
+        "date": "27/01/24"
+    },
+    {
+        "desc": "CASH WITHDRAWAL",
+        "bal": 2458.68,
+        "trans": -600.0,
+        "date": "27/01/24"
+    },
+    {
+        "desc": "SALE DEBIT AEON CO- BDR BARU K* KLANG, MYS SALE DEBIT",
+        "bal": 2455.08,
+        "trans": -3.6,
+        "date": "27/01/24"
+    },
+    {
+        "desc": "PAYMENT VIA MYDEBIT SHAH ALAM PAYMENT VIA MYDEBIT",
+        "bal": 2364.98,
+        "trans": -90.1,
+        "date": "28/01/24"
+    },
+    {
+        "desc": "SALE DEBIT WU *7426080509 * Kuala Kumpur, MYS SALE DEBIT",
+        "bal": 1672.16,
+        "trans": -692.82,
+        "date": "28/01/24"
+    },
+    {
+        "desc": "TRANSFER FROM A/C GOLDEN DIGIT COMMUN*",
+        "bal": 772.16,
+        "trans": -900.0,
+        "date": "29/01/24"
+    },
+    {
+        "desc": "SALE DEBIT AEON CO- BDR BARU K* KLANG, MYS SALE DEBIT",
+        "bal": 764.36,
+        "trans": -7.8,
+        "date": "31/01/24"
+    },
+    {
+        "desc": "IBK FUND TFR FR A/C PLATINUM MODEL SDN * Rent for February MBB CT ENDING BALANCE : 194.36 TOTAL CREDIT : 3,269.45 TOTAL DEBIT : 4,425.09",
+        "bal": 194.36,
+        "trans": -570.0,
+        "date": "31/01/24"
+    }
+]

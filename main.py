@@ -94,6 +94,8 @@ with open("extracted.csv", "w", newline="") as csv_file:
     writer.writerows(rtn)  # Write the data rows
 
 tracking_bal = 0.0
+tracking_cred = 0.0
+tracking_deb = 0.0
 
 # Define ANSI escape codes for colors
 CYAN = "\033[96m"
@@ -109,7 +111,13 @@ for i, obj in enumerate(rtn):
         print(f"{CYAN}BEGINNING BALANCE{RESET}: {GREEN}{obj['bal']:.2f}{RESET}")
         tracking_bal = obj["bal"]
     else:
-        transaction_color = GREEN if obj["trans"] > 0 else RED
+        is_credit = obj["trans"] > 0
+        if is_credit:
+            tracking_cred += obj["trans"]
+        else:
+            tracking_deb += obj["trans"]
+
+        transaction_color = GREEN if is_credit else RED
 
         # Format transaction and balance
         transaction = f"BAL:{round(tracking_bal,2)} => {transaction_color}{obj['trans']:.2f}{RESET}"
@@ -127,3 +135,7 @@ for i, obj in enumerate(rtn):
 
         # Update tracking balance
         tracking_bal += obj["trans"]
+
+print(
+    f"TOTAL BALANCE: {round(tracking_bal,2)}, TOTAL CREDIT: {round(tracking_cred,2)}, TOTAL DEBIT: {round(tracking_deb,2)}"
+)
