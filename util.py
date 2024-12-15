@@ -81,7 +81,7 @@ def print_acc_summary(value):
 
     for i, obj in enumerate(value):
         if i == 0:
-
+            print("==============================================================")
             print(f"{CYAN}BEGINNING BALANCE{RESET}: {GREEN}{obj['bal']:.2f}{RESET}")
             tracking_bal = obj["bal"]
         else:
@@ -93,7 +93,7 @@ def print_acc_summary(value):
 
             transaction_color = GREEN if is_credit else RED
 
-            transaction = f"BAL:{round(tracking_bal,2)} => {transaction_color}{obj['trans']:.2f}{RESET}"
+            transaction = f"{obj['date']} BAL:{round(tracking_bal,2)} => {transaction_color}{obj['trans']:.2f}{RESET}"
             new_balance = f"{BLUE}{obj['bal']:.2f}{RESET}"
 
             balance_check = (
@@ -191,7 +191,10 @@ def read_pdfs(path, pwd):
         for filename in os.listdir(path):
             if filename.endswith(".pdf"):  # Check if the file is a PDF
                 file_path = os.path.join(path, filename)
-                pdf_files.append(read_single_pdf_file(file_path, pwd))
+                try:
+                    pdf_files.append(read_single_pdf_file(file_path, pwd))
+                except:
+                    pdf_files.append(read_single_pdf_file(file_path, None))
     except NotADirectoryError as e:
         pdf_files.append(read_single_pdf_file(path, pwd))
 

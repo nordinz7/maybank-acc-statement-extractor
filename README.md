@@ -15,14 +15,14 @@ Example of the JSON output:
   {
     "date": "01/01/2024",
     "desc": "Deposit from client",
-    "bal": 1050.0,
-    "trans": 50.0
+    "trans": 50.0,
+    "bal": 1050.0
   },
   {
     "date": "02/01/2024",
     "desc": "Purchase - Office Supplies",
-    "bal": 1030.0,
-    "trans": -20.0
+    "trans": -20.0,
+    "bal": 1030.0
   }
 ]
 ```
@@ -49,7 +49,7 @@ date,desc,trans,bal
    `pip install -r requirements.txt`
 
 5. on terminal, run
-   `python3 main.py --file-path=account_statement.pdf --file-password=01Mar2000`
+   `python3 main.py --file-path=example.pdf --file-password=01Mar2000`
 
-6. for more, run
+6. for more help, run
    ` python3 main.py --help`

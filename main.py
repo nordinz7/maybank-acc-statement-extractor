@@ -19,16 +19,6 @@ from util import (
     help="password for PDF statement assuming same for every file",
 )
 @click.option(
-    "--single",
-    default=False,
-    help="merge output into single file if folder or multiple PDF passed",
-)
-@click.option(
-    "--sort",
-    default=False,
-    help="sort by transaction date",
-)
-@click.option(
     "--format",
     default="csv",
     help="output file format either csv or json",
