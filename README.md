@@ -1,11 +1,11 @@
-# MayBank email statement delivery Data Extraction (Monthly)
+# MayBank email statement delivery to CSV or JSON (Monthly)
 
 This project extracts financial data from Maybank statement to JSON or CSV.
 
 ### Features
 
 - output it in either JSON and CSV formats.
-- read folder extract data in single or individual files
+- read folder extract data into single or individual files
   -The extracted data includes date, description, transaction amount, balance exactly as the statement.
 
 Example of the JSON output:
@@ -35,21 +35,87 @@ date,desc,trans,bal
 02/01/2024,Purchase - Office Supplies,-20.00,1030.00
 ```
 
-## Getting started:
+## Getting Started
 
-1. cd into the project folder.
-2. install virtual enviroment:
-   `python -m venv venv`
-3. activate virtual enviroment:
+Follow these steps to set up and run the project:
 
-- on linux =>`source venv/bin/activate`
-  -on windows =>`venv\Scripts\activate`
+### 1. Navigate to the Project Directory
 
-4. install dependencies
-   `pip install -r requirements.txt`
+```bash
+cd <project-folder>
+```
 
-5. on terminal, run
-   `python3 main.py --file-path=example.pdf --file-password=01Mar2000`
+### 2. Install Virtual Environment
 
-6. for more help, run
-   ` python3 main.py --help`
+Create a virtual environment:
+
+```bash
+python3 -m venv venv
+```
+
+### 3. Activate Virtual Environment
+
+- **On Linux/macOS:**
+  ```bash
+  source venv/bin/activate
+  ```
+- **On Windows:**
+  ```bash
+  venv\Scripts\activate
+  ```
+
+### 4. Install Dependencies
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Application
+
+To execute the program, use:
+
+```bash
+python3 main.py --path=example.pdf --pwd=01Mar2000
+```
+
+### 6. View Help Options
+
+For more details on usage:
+
+```bash
+python3 main.py --help
+```
+
+---
+
+## Usage
+
+### Command:
+
+```bash
+main.py [OPTIONS]
+```
+
+### Options:
+
+| Option                    | Description                                                             |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `--path TEXT`             | Path to the file or folder containing PDF statements.                   |
+| `--pwd TEXT`              | Password for PDF statements, assuming the same password for every file. |
+| `--format TEXT`           | Output file format, either `csv` or `json`.                             |
+| `--print-summary BOOLEAN` | Print a summary of the account statement.                               |
+| `--merge BOOLEAN`         | Output only a single merged file.                                       |
+| `--help`                  | Show help information and exit.                                         |
+
+---
+
+### Example Command:
+
+To process a PDF file with the password `01Mar2000`:
+
+```bash
+python3 main.py --path=example.pdf --pwd=01Mar2000
+python3 main.py --path=statements-folder --pwd=01Mar2000 #example extracting all data from folder containing PDFs
+```
