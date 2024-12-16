@@ -14,6 +14,7 @@ NOTE_END_ENTRY = (
     "ENTRY DATE TRANSACTION DESCRIPTION TRANSACTION AMOUNT STATEMENT BALANCE"
 )
 OUTPUT_FILENAME = "MBB_EXTRACTED"
+EXCLUDE_ITEMS= ['TOTAL CREDIT', 'TOTAL DEBIT', 'ENDING BALANCE']
 
 Output = TypedDict("Output", {"date": str, "desc": str, "bal": float, "trans": float})
 
@@ -123,6 +124,7 @@ def get_filtered_data(arr):
             break
 
     filtered = arr[indexes[0] : indexes[1]]
+
     temp = np.array(filtered)
     notes_indices = np.where(
         np.char.startswith(temp, NOTE_START_ENTRY)
@@ -131,13 +133,13 @@ def get_filtered_data(arr):
 
     expanded = expand_ranges(notes_indices)
 
-    arr = []
+    narr = []
 
     for i, v in enumerate(temp):
-        if i not in expanded:
-            arr.append(v)
+        if i not in expanded and (not any(v.startswith(item) for item in EXCLUDE_ITEMS)):
+            narr.append(v)
 
-    return arr
+    return narr
 
 
 def get_mapped_data(arr):
