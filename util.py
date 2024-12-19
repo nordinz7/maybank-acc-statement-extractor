@@ -14,7 +14,7 @@ NOTE_END_ENTRY = (
     "ENTRY DATE TRANSACTION DESCRIPTION TRANSACTION AMOUNT STATEMENT BALANCE"
 )
 OUTPUT_FILENAME = "MBB_EXTRACTED"
-EXCLUDE_ITEMS= ['TOTAL CREDIT', 'TOTAL DEBIT', 'ENDING BALANCE']
+EXCLUDE_ITEMS = ["TOTAL CREDIT", "TOTAL DEBIT", "ENDING BALANCE"]
 
 Output = TypedDict("Output", {"date": str, "desc": str, "bal": float, "trans": float})
 
@@ -136,7 +136,9 @@ def get_filtered_data(arr):
     narr = []
 
     for i, v in enumerate(temp):
-        if i not in expanded and (not any(v.startswith(item) for item in EXCLUDE_ITEMS)):
+        if i not in expanded and (
+            not any(v.startswith(item) for item in EXCLUDE_ITEMS)
+        ):
             narr.append(v)
 
     return narr
@@ -209,7 +211,10 @@ def read_pdfs(path, pwd):
 
 
 def process_output(arr, options):
-    output_extracted_data(arr, options)
+    if options["output"]:
+        output_extracted_data(arr, options)
+    else:
+        print(json.dumps(arr, indent=4))
 
     if options["print_summary"]:
         print_acc_summary(arr)

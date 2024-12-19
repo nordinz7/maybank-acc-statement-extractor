@@ -11,26 +11,44 @@ from util import (
 @click.command()
 @click.option(
     "--path",
-    help="path to file or folder containing PDF statements",
+    required=True,
+    help="Path to file or folder containing PDF statements",
 )
 @click.option(
     "--pwd",
-    help="password for PDF statement assuming same for every file",
+    required=True,
+    help="Password for PDF statement assuming same for every file",
 )
 @click.option(
     "--format",
+    type=click.Choice(["csv", "json"], case_sensitive=False),
     default="csv",
-    help="output file format either csv or json",
+    show_default=True,
+    help="Output file format either csv or json",
 )
 @click.option(
     "--print-summary",
+    is_flag=True,
     default=False,
-    help="print summary of the account statement",
+    show_default=True,
+    help="Print summary of the account statement",
 )
 @click.option(
     "--merge",
+    is_flag=True,
     default=True,
-    help="output only single merged file.",
+    show_default=True,
+    help="Output only single merged file",
+)
+@click.option(
+    "--output",
+    type=click.Path(),
+    help="Output file path. If not provided, output will be printed to terminal",
+)
+@click.option(
+    "--verbose",
+    is_flag=True,
+    help="Enable verbose mode for detailed output",
 )
 def main(*args, **kwargs):
     arr = read_pdfs(kwargs["path"], kwargs["pwd"])
