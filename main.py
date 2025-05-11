@@ -1,11 +1,6 @@
 import click
-from util import (
-    get_filtered_data,
-    get_mapped_data,
-    kebab_to_snake,
-    process_output,
-    read_pdfs,
-)
+from util import process_output, read_from_file_or_folder
+from itertools import chain
 
 
 @click.command()
@@ -51,23 +46,16 @@ from util import (
     help="Enable verbose mode for detailed output",
 )
 def main(*args, **kwargs):
-    arr = read_pdfs(kwargs["path"], kwargs["pwd"])
+    path = kwargs["path"]
+    pwd = kwargs["pwd"]
 
-    processed = []
-
-    for ar in arr:
-        filtered_data = get_filtered_data(ar)
-
-        mapped_data = get_mapped_data(filtered_data)
-
-        if kwargs["merge"]:
-            processed.extend(mapped_data)
-            continue
-
-        process_output(mapped_data, kwargs)
-
-    if processed:
-        process_output(processed, kwargs)
+    data = read_from_file_or_folder(path, pwd)
+    if kwargs["merge"]:
+        # Ensure data is a list of lists before flattening
+        if data and not isinstance(data[0], (list, tuple)):
+            data = [data]
+        data = list(chain.from_iterable(data))
+    process_output(data, kwargs)
 
 
 if __name__ == "__main__":

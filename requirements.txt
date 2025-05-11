@@ -3,6 +3,7 @@ cffi==1.17.1
 charset-normalizer==3.4.0
 click==8.1.7
 cryptography==44.0.0
+maybankpdf2json==0.1.5
 mypy-extensions==1.0.0
 numpy==2.2.0
 packaging==24.2
